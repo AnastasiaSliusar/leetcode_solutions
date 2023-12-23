@@ -1,1 +1,1 @@
-# leetcode_solutions
+# This repository contains solutions of Leet Code problems
