@@ -1,0 +1,51 @@
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var longestPalindrome = function(s) {
+    let polidromes = '';
+    let i = 0;
+   
+    console.log(`s.length-->${s.length}`);
+    let max = 0;
+    if (s.length === 1 ) {
+        polidromes = s;
+    } if (s.length === 2) {
+        if(s[0] === s[s.length-1]){
+            polidromes = s;
+        }
+    } else {
+    while (i<s.length){
+        let newStr = s.slice(i);
+        let j = newStr.length;
+        let k=0;
+        while(j>1){
+      
+        let str = newStr.slice(k, j);
+        let isDiv = str.length % 2 === 0;
+            let halfIndex = Math.floor(str.length/2);
+          
+            let netxAfterHalf = halfIndex;
+            let rightHalf = str.slice(netxAfterHalf, j);
+            let leftHalf = reverse(str.slice(k, isDiv? halfIndex :halfIndex+1));
+   
+            if (leftHalf === rightHalf) {
+                if (max < str.length){
+                    max = str.length; 
+                    polidromes = str;
+                }
+            } else {
+                console.log('not similar');
+            }
+            j-=1;
+        }
+        i+=1;
+
+    }
+    }
+    return polidromes;
+};
+
+function reverse(s){
+    return s.split("").reverse().join("");
+}
