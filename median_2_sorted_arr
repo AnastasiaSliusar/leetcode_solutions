@@ -1,0 +1,22 @@
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number}
+ */
+var findMedianSortedArrays = function (nums1, nums2) {
+    let globalArr = [...nums1, ...nums2];
+    let newGlobalArr = globalArr.sort(compareNumbers);
+    let countGlobalArr = Math.ceil(newGlobalArr.length / 2) - 1;
+    let median = 0;
+    if ((newGlobalArr.length % 2) === 0) {
+        median = (newGlobalArr[countGlobalArr] + globalArr[countGlobalArr + 1]) / 2;
+
+    } else {
+        median = newGlobalArr[countGlobalArr];
+    }
+    return median;
+};
+
+function compareNumbers(a, b) {
+    return a - b;
+}
